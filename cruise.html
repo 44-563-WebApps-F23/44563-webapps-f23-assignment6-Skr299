@@ -7,59 +7,67 @@
 </head>
 
 <body>
-    <h1>Sai Krishna Reddy Seelam goes on a cruise</h1>
 
-    <form>
-        <label for="checkbox1">Shares Cabin</label>
-        <input type="checkbox" id="checkbox1" value="True"><br>
-        <br>
-        <label for="checkbox2">Breakfast</label>
-        <input type="checkbox" id="checkbox2" value="True"><br>
-        <br>
-        <label for="checkbox3">Pool Pass</label>
-        <input type="checkbox" id="checkbox3" value="False"><br>
-    </form>
-    <br>
-    <button onclick="selectCruise()">Select a cruise</button><br>
-    <br>
-    
-   
-    <b><div id="my_cruise"></div></b><br>
+    <div class="container">
 
-    <form>
-        <label for="daysInput">Enter the number of days</label>
-        <input type="text" id="daysInput" value="days"><br>
-        <br>
-        <label for="priceInput">Enter price</label>
-        <input type="text" id="priceInput" value=""><br>
-        <br>
-    </form>
-    
-    <button onclick="updateCruise()">Update the cruise</button><br>
+            <h1>Sai Krishna Reddy Seelam goes on a cruise</h1>
+            <h3>Input elements</h3>
+            <form class="mb-4">
+                <div class="form-group form-check">
+                    <label class="form-check-label"><input type="checkbox" id="checkbox1" checked=true
+                            class="form-check-input"> Shares Cabin</label><br>
+                    <label class="form-check-label"><input type="checkbox" id="checkbox2" checked=true
+                            class="form-check-input"> Breakfast</label><br>
+                    <label class="form-check-label"><input type="checkbox" id="checkbox3" class="form-check-input"> Pool
+                        Pass</label><br>
+                </div>
 
-    <script>
-        let my_cruise = {};
+                <button type="button" onclick="selectCruise()" class="btn btn-primary">Select a cruise</button>
+            </form>
 
-        function selectCruise() {
-            my_cruise = {};
-            
-            my_cruise.shared = document.getElementById('checkbox1').checked;
-            my_cruise.breakfast = document.getElementById('checkbox2').checked;
-            my_cruise.pool = document.getElementById('checkbox3').checked;
+            <b>
+                <div id="cruise-results"></div>
+            </b><br>
 
-            document.getElementById('my_cruise').innerHTML = JSON.stringify(my_cruise);
-        }
 
-        function updateCruise() {
-        let days = document.getElementById('daysInput').value;
+            <form class="mb-4">
+                <label for="daysInput">Enter the number of days</label>
+                <input type="text" id="daysInput" value="days"><br>
+                <br>
+                <label for="priceInput">Enter price</label>
+                <input type="text" id="priceInput" value="price"><br>
+                <br>
+            </form>
 
-        let price = document.getElementById('priceInput').value;
+            <button type="button" onclick="updateCruise()" class="btn btn-primary">Update the cruise</button><br>
+            <br>
+            <b>
+                <div id="Cruise-results2"></div>
+            </b><br>
 
-        my_cruise.days = days;
-        my_cruise.price = price;
+            <script>
+                let my_cruise = {};
 
-        document.getElementById('my_cruise').innerHTML = "my_cruise[...] = " + JSON.stringify(my_cruise);
-    }
-    </script>
-    
+                function selectCruise() {
+                    my_cruise = {};
+                    my_cruise.shared = document.getElementById('checkbox1').checked;
+                    my_cruise.breakfast = document.getElementById('checkbox2').checked;
+                    my_cruise.pool = document.getElementById('checkbox3').checked;
+
+                    document.getElementById('cruise-results').innerHTML = JSON.stringify(my_cruise);
+                }
+
+                function updateCruise() {
+                    my_cruise = {};
+                    let days = document.getElementById('daysInput').value;
+
+                    let price = document.getElementById('priceInput').value;
+
+                    my_cruise.days = days;
+                    my_cruise.price = price;
+
+                    document.getElementById('Cruise-results2').innerHTML = "my_cruise[...] = " + JSON.stringify(my_cruise);
+                }
+            </script>
+        </div>
 </body>
