@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Cruise Webpage</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <h1>Sai Krishna Reddy Seelam goes on a cruise</h1>
+
+    <form>
+        <label for="checkbox1">Shares Cabin</label>
+        <input type="checkbox" id="checkbox1" value="True"><br>
+        <br>
+        <label for="checkbox2">Breakfast</label>
+        <input type="checkbox" id="checkbox2" value="True"><br>
+        <br>
+        <label for="checkbox3">Pool Pass</label>
+        <input type="checkbox" id="checkbox3" value="False"><br>
+    </form>
+    <br>
+    <button onclick="selectCruise()">Select a cruise</button><br>
+    <br>
+    
+   
+    <b><div id="my_cruise"></div></b><br>
+
+    <form>
+        <label for="daysInput">Enter the number of days</label>
+        <input type="text" id="daysInput" value="days"><br>
+        <br>
+        <label for="priceInput">Enter price</label>
+        <input type="text" id="priceInput" value=""><br>
+        <br>
+    </form>
+    
+    <button onclick="updateCruise()">Update the cruise</button><br>
+
+    <script>
+        let my_cruise = {};
+
+        function selectCruise() {
+            my_cruise = {};
+            
+            my_cruise.shared = document.getElementById('checkbox1').checked;
+            my_cruise.breakfast = document.getElementById('checkbox2').checked;
+            my_cruise.pool = document.getElementById('checkbox3').checked;
+
+            document.getElementById('my_cruise').innerHTML = JSON.stringify(my_cruise);
+        }
+
+        function updateCruise() {
+        let days = document.getElementById('daysInput').value;
+
+        let price = document.getElementById('priceInput').value;
+
+        my_cruise.days = days;
+        my_cruise.price = price;
+
+        document.getElementById('my_cruise').innerHTML = "my_cruise[...] = " + JSON.stringify(my_cruise);
+    }
+    </script>
+    
+</body>
